@@ -1,0 +1,1 @@
+web: gunicorn Versao6.7.0:app

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" name="viweport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'tormenta_logo.ico')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'estilos_tormenta.css')}}">
+    <title>Calculador de rotas: Tormenta</title>
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+  <header>
+      <h1 id="titulo">Calculador de rotas para Tormenta RPG</h1>
+      <p id="desc">
+          Apenas escolha seu destino de aventura e a partir de onde começerá. Os cálculos nós fazemos!
+      </p>
+  </header>
+
+  <main>
+      <div>
+          <h2>Marque os locais de inicio e destino de sua viagem!</h2>
+          <div id="viagem">
+            <h3 class="tormenta">Iniciando uma nova viagem!!!</h3>
+            {% for jornada in viagem %}
+              <p class="tormenta_txt">{{jornada.atual}}
+              {% if jornada.terreno_percorrido != 'none' %}
+                {{jornada.terreno_percorrido}}</p>
+              {% endif %}
+              {% if jornada.carruagem_check != 'none' %}
+                <p class="tormenta_txt observacao">{{jornada.carruagem_check}}</p>
+              {% endif %}
+              {% if jornada.cavalo_check != 'none' %}
+                <p class="tormenta_txt observacao">{{jornada.cavalo_check}}</p>
+              {% endif %}
+              {% if jornada.mar_check != 'none' %}
+                <p class="tormenta_txt observacao">{{jornada.mar_check}}</p>
+              {% endif %}
+              {% if jornada.viagem_final != 'none' %}
+                <p class="tormenta_txt" id="final">{{jornada.viagem_final}}</p>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <form action="{{ url_for('resultado') }}" class="forma" method="POST">
+              <p>
+                  <label for="inicio">Local de partida: </label>
+                  <select name="nome_inicio" id="inicio">
+                      <option value="26" name="AD">Adhurian</option>
+                      <option value="38" name="GSO">A Grande Savana (oeste)</option>
+                      <option value="40" name="GSC">A Grande Savana (centro)</option>
+                      <option value="39" name="GSL">A Grande Savana (leste)</option>
+                      <option value="10" name="AL">Altrim</option>
+                      <option value="5" name="BA">Barud</option>
+                      <option value="50" name="CNH">Cidade Normal dos Humanos</option>
+                      <option value="52" name="CD">Cidade no deserto</option>
+                      <option value="25" name="CO">Coravandor</option>
+                      <option value="14" name="COR">Coridrian</option>
+                      <option value="44" name="DPL">Deserto da Perdição (leste)</option>
+                      <option value="45" name="DPC">Deserto da Perdição (centro)</option>
+                      <option value="46" name="DPO">Deserto da Perdição (oeste)</option>
+                      <option value="47" name="EP">Ermos Púrpuros</option>
+                      <option value="49" name="FEV">Floresta das Escamas Verdes</option>
+                      <option value="48" name="FT">Floresta de Tollon</option>
+                      <option value="18" name="FR">Fross</option>
+                      <option value="32" name="GH">Ghallistryx</option>
+                      <option value="17" name="GI">Giluk</option>
+                      <option value="9" name="HI">Hippiontar</option>
+                      <option value="15" name="HO">Horeen</option>
+                      <option value="54" name="ITL">Imperio de Tauron (leste)</option>
+                      <option value="55" name="ITO">Imperio de Tauron (oeste)</option>
+                      <option value="56" name="ITC">Imperio de Tauron (centro)</option>
+                      <option value="57" name="ITN">Imperio de Tauron (norte)</option>
+                      <option value="51" name="KH">Khershandallas</option>
+                      <option value="29" name="KHA">Khalifor</option>
+                      <option value="13" name="KAN">Kannilar</option>
+                      <option value="27" name="LA">Lannestul</option>
+                      <option value="30" name="LY">Lysianassa</option>
+                      <option value="23" name="MI">Milothiann</option>
+                      <option value="41" name="MSS">Montanhas Sanguinarias (sul)</option>
+                      <option value="42" name="MSC">Montanhas Sanguinarias (centro)</option>
+                      <option value="43" name="MSN">Montanhas Sanguinarias (norte)</option>
+                      <option value="33" name="MUL">Montanhas Uivantes (leste)</option>
+                      <option value="34" name="MUO">Montanhas Uivantes (oeste)</option>
+                      <option value="35" name="MUS">Montanhas Uivantes (sul)</option>
+                      <option value="36" name="MUN">Montanhas Uivantes (norte)</option>
+                      <option value="37" name="MUC">Montanhas Uivantes (centro)</option>
+                      <option value="31" name="MP">Monte Palidor</option>
+                      <option value="22" name="NO">Norm</option>
+                      <option value="24" name="NOR">Norba</option>
+                      <option value="4" name="NM">Nova Malpetrim</option>
+                      <option value="11" name="NI">Nimbarann</option>
+                      <option value="2" name="PA">Palthar</option>
+                      <option value="21" name="RO">Roschfallen</option>
+                      <option value="53" name="RT">Ruinas de Tyrondir</option>
+                      <option value="3" name="RH">Rhond</option>
+                      <option value="28" name="ST">Sternatchen</option>
+                      <option value="16" name="SM">Smokestone</option>
+                      <option value="58" name="TI">Tiberus</option>
+                      <option value="12" name="TH">Thartann</option>
+                      <option value="1" name="VA">Valkaria</option>
+                      <option value="8" name="VI">Villent</option>
+                      <option value="19" name="YUK">Yukadar</option>
+                      <option value="20" name="YUT">Yuton</option>
+                      <option value="6" name="YU">Yuvalin</option>
+                      <option value="7" name="ZA">Zakharin</option>
+                  </select>
+              </p>
+
+              <p>
+                  <label for="destino">Local de destino: </label>
+                  <select name="nome_destino" id="destino">
+                      <option value="26" name="AD">Adhurian</option>
+                      <option value="38" name="GSO">A Grande Savana (oeste)</option>
+                      <option value="40" name="GSC">A Grande Savana (centro)</option>
+                      <option value="39" name="GSL">A Grande Savana (leste)</option>
+                      <option value="10" name="AL">Altrim</option>
+                      <option value="5" name="BA">Barud</option>
+                      <option value="50" name="CNH">Cidade Normal dos Humanos</option>
+                      <option value="52" name="CD">Cidade no deserto</option>
+                      <option value="25" name="CO">Coravandor</option>
+                      <option value="14" name="COR">Coridrian</option>
+                      <option value="44" name="DPL">Deserto da Perdição (leste)</option>
+                      <option value="45" name="DPC">Deserto da Perdição (centro)</option>
+                      <option value="46" name="DPO">Deserto da Perdição (oeste)</option>
+                      <option value="47" name="EP">Ermos Púrpuros</option>
+                      <option value="49" name="FEV">Floresta das Escamas Verdes</option>
+                      <option value="48" name="FT">Floresta de Tollon</option>
+                      <option value="18" name="FR">Fross</option>
+                      <option value="32" name="GH">Ghallistryx</option>
+                      <option value="17" name="GI">Giluk</option>
+                      <option value="9" name="HI">Hippiontar</option>
+                      <option value="15" name="HO">Horeen</option>
+                      <option value="54" name="ITL">Imperio de Tauron (leste)</option>
+                      <option value="55" name="ITO">Imperio de Tauron (oeste)</option>
+                      <option value="56" name="ITC">Imperio de Tauron (centro)</option>
+                      <option value="57" name="ITN">Imperio de Tauron (norte)</option>
+                      <option value="51" name="KH">Khershandallas</option>
+                      <option value="29" name="KHA">Khalifor</option>
+                      <option value="13" name="KAN">Kannilar</option>
+                      <option value="27" name="LA">Lannestul</option>
+                      <option value="30" name="LY">Lysianassa</option>
+                      <option value="23" name="MI">Milothiann</option>
+                      <option value="41" name="MSS">Montanhas Sanguinarias (sul)</option>
+                      <option value="42" name="MSC">Montanhas Sanguinarias (centro)</option>
+                      <option value="43" name="MSN">Montanhas Sanguinarias (norte)</option>
+                      <option value="33" name="MUL">Montanhas Uivantes (leste)</option>
+                      <option value="34" name="MUO">Montanhas Uivantes (oeste)</option>
+                      <option value="35" name="MUS">Montanhas Uivantes (sul)</option>
+                      <option value="36" name="MUN">Montanhas Uivantes (norte)</option>
+                      <option value="37" name="MUC">Montanhas Uivantes (centro)</option>
+                      <option value="31" name="MP">Monte Palidor</option>
+                      <option value="22" name="NO">Norm</option>
+                      <option value="24" name="NOR">Norba</option>
+                      <option value="4" name="NM">Nova Malpetrim</option>
+                      <option value="11" name="NI">Nimbarann</option>
+                      <option value="2" name="PA">Palthar</option>
+                      <option value="21" name="RO">Roschfallen</option>
+                      <option value="53" name="RT">Ruinas de Tyrondir</option>
+                      <option value="3" name="RH">Rhond</option>
+                      <option value="28" name="ST">Sternatchen</option>
+                      <option value="16" name="SM">Smokestone</option>
+                      <option value="58" name="TI">Tiberus</option>
+                      <option value="12" name="TH">Thartann</option>
+                      <option value="1" name="VA">Valkaria</option>
+                      <option value="8" name="VI">Villent</option>
+                      <option value="19" name="YUK">Yukadar</option>
+                      <option value="20" name="YUT">Yuton</option>
+                      <option value="6" name="YU">Yuvalin</option>
+                      <option value="7" name="ZA">Zakharin</option>
+                  </select>
+              </p>
+
+              <fieldset id="caixinha">
+                  <legend>Meio de transporte</legend>
+                  <input type="radio" name="transporte" id="tpe" value="1" checked>
+                    <label for="tpe">A pé</label>
+                  <input type="radio" name="transporte" id="tcavalo" value="2">
+                    <label for="tcavalo">Cavalos</label>
+                  <input type="radio" name="transporte" id="tcarroca" value="3">
+                    <label for="tcarroca">Carroça</label>
+              </fieldset>
+
+              <p>
+                  <input type="submit" value="Viajar">
+              </p>
+          </form>
+      </div>
+      <img src="{{ url_for('static', filename = 'mapa1600.jpg')}}" alt="Mapa mundi de Arton">
+  </main>
+
+  <footer>
+      <p>Site criado por Samuel Linhares para o projeto integrador.</p>
+  </footer>
+
+</body>
+</html>
