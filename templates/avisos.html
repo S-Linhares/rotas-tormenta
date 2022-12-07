@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" name="viweport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'tormenta_logo.ico')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'estilos_tormenta.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'estilos_avisos.css')}}">
+    <title>Calculador de rotas: Tormenta</title>
+
+</head>
+<body>
+  <header>
+      <h1 id="titulo">Calculador de rotas para Tormenta RPG</h1>
+      <p id="desc">
+          Apenas escolha seu destino de aventura e a partir de onde começerá. Os cálculos nós fazemos!
+      </p>
+  </header>
+
+  <main>
+    <h1>Agradecimentos/ avisos/ atualizações</h1>
+    <p class="direita">
+        <a class="botaoh1" href="{{ url_for('raiz') }}">Voltar a viagem!</a>
+    </p>
+    <h2>Avisos</h2>
+    <div class="paragrafos">
+        <p class="paragrafo">
+            Primeiramente, eu gostaria de agradecer a todos que acabaram acessando este meu projeto, porém vou deixar os agradecimentos em um tópico abaixo. Neste tópico quero apenas
+            me posicionar em relação a este site.
+        </p>
+        <p class="paragrafo">
+            O principal aviso aqui é que irei continuamente atualizar este projeto, pois ele não é apenas algo que fiz para a faculdade ou por estar com tédio, e sim algo que fiz
+            por ter gostado muito da ideia e pelo estado atual dele estar longe do que idealizei como produto final. Então não, ele não vai se manter neste formato, e sim, tem
+            muitas coisas a serem melhoradas e implementadas e consertadas. Eu já tenho algumas coisas em minha fila de implementação que irei fazendo aos poucos por aqui, e estarei
+            toda semana mexendo aqui e ali, tanto no front-end quanto no back-end. Atualizando coisas do jeito que quero e idealizei, atualizando coisas de acordo com novos lançamentos
+            em relação a Tormenta20 e assim por diante. Então caso você que esteja lendo isso aqui gostou deste projeto, não se preocupe, ele estará por um longo tempo recebendo
+            atualizações e suporte. E claro, qualquer feedback das pessoas que gostaram da ideia proposta aqui será bem vinda. Mesmo que seja um projeto pessoal, é algo que abri para a 
+            comunidade pois quero contribuir para ela. :)
+        </p>
+    </div>
+    <h2>Agradecimentos</h2>
+    <div class="paragrafos">
+        <p class="paragrafo">
+            Pois então! Eu não esperava ter visitantes neste site tão cedo kkkkkk, mas meu amigo (Edimar) realmente ficou muito empolgado quando mostrei e expliquei sobre o projeto 
+            que aqui iniciei. E no mesmo momento, enquanto faziamos uma call pelo discord, ele acabou anunciando tudo isso em um grupo oficial de Tormenta RPG. Mesmo com ele me 
+            falando enquanto publicava, eu não esperava que teria um feedback tão legal de forma rápida.
+        </p>
+        <p class="paragrafo">
+            Então novamente agradeço a todos que viram aquele post, acessaram este site e gostaram do que viram; e ainda deram feedbacks de apoio, sugestões, elogios e incentivo para 
+            a continuidade disso tudo. A comunidade de Tormenta é realmente muito legal com iniciativas de fãs e isso revigora demais as vontades. Podem continuar acessando e utilizando 
+            esta ferramenta, pois ela vai estar sempre sendo atualizado por outro fã, jogador e mestre como todos que se interessaram e sentiram alivio ao ver uma nova ferramenta amiga 
+            nos jogos. Uma boa mesa a todos e que Azgher esteja olhando por nós em cada dia ensolarado. :D
+        </p>
+    </div>
+    <h2>Atualizações</h2>
+    <div class="paragrafos">
+        <h3>Sobre atualizações</h3>
+            <p class="paragrafo">
+                No fim das contas, as atualizações aqui funcionam de forma simples. Farei atualizações semanais, porém pequenas. Mudar um cálculo que esteja precipitado, adicionar 
+                cores novas, adicionar novos tópicos, testar uma nova mecânica... acho que deu para entender, em média. Eu já possuo diversas ideias de coisas para serem implementadas, 
+                mas estarei sempre aceitando feedback de alguém que esteja usando. Aqui eu estarei deixando as duas redes sociais que possuo atualmente (instagram e discord), sintam-se 
+                a vontade para entrarem em contato comigo. Porém, um pontinho que gostaria de deixar, é que aceitarei todo dia de sugestão e dica, mas irei implementar apenas coisas 
+                que não fogem do que idealizei ao iniciar este projeto, que já é querido para mim. Mas é isso, qualquer duvida ou sugestão, pode falar comigo.  >:D
+            </p>
+        <h3>Planejamentos atuais!</h3>
+            <p class="paragrafo">
+                Este é um tópico que continuamente será atualizado. Pois deixarei aqui explícito quais as próximas atualizações que pretendo implementar. Então mensalmente este 
+                tópico será atualizado (ou antes)!
+            </p>
+            <p>
+                Previstos:
+            </p>
+            <ul>
+                <li>
+                    Alterar a quilometragem percorrida por dia! A usada, atualmente, leva em conta dados da vida real e não do rpg 
+                    (9m por turno, normalmente, a pé; 12m por turno, normalmente, a cavalo; etc);
+                </li>
+                <br>
+                <li>
+                    Adicionar a opção de subir novamente no cavalo após passar por terrenos que não se pode cavalgar. Após passar por um pântano e chegar em uma planície, os hérois
+                    podem querer voltar a cavalgar;
+                </li>
+                <br>
+                <li>
+                    Adicionar um menu simples, para dividir a parte principal das partes de avisos e contato.
+                </li>
+            </ul>
+        <h3>Histórico</h3>
+            <p class="paragrafo">
+                Histórico, com data, de todas as atualizações implementadas. Com o passar do tempo as atualizações mais antigas irão sair, para não ficar uma lista imensa com scroll infinito.
+            </p>
+    </div>
+  </main>
+
+  <footer>
+    <h4>Site criado por Samuel Linhares Nogueira para o projeto integrador.</h4>
+    <p>Contato:
+        <a class="links" href="https://instagram.com/samoel_dlc" target="blank" rel="external">
+            <img class="icone" src="{{ url_for('static', filename = 'icone-instagram-color.png')}}">Instagram
+        </a>
+    </p>
+</footer>
+
+</body>
+</html>
