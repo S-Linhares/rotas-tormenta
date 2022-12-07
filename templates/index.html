@@ -183,7 +183,7 @@
               </fieldset>
 
               <p>
-                  <input type="submit" value="Viajar">
+                  <input type="submit" value="Viajar"> <a id="botao" href="{{ url_for('avisos') }}">Atualizações e avisos :)</a>
               </p>
           </form>
       </div>
@@ -191,7 +191,12 @@
   </main>
 
   <footer>
-      <p>Site criado por Samuel Linhares para o projeto integrador.</p>
+      <h4>Site criado por Samuel Linhares Nogueira para o projeto integrador.</h4>
+      <p>Contato:
+          <a class="links" href="https://instagram.com/samoel_dlc" target="blank" rel="external">
+              <img class="icone" src="{{ url_for('static', filename = 'icone-instagram-color.png')}}">Instagram
+          </a>
+      </p>
   </footer>
 
 </body>
