@@ -902,5 +902,10 @@ def resultado():
     return render_template('index.html', viagem=viagem)
 
 
+@app.route('/avisos', methods=['GET', 'POST'])
+def avisos():
+    return render_template('avisos.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
