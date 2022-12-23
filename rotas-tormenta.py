@@ -353,19 +353,19 @@ def resultado():
         # 0 - a pé; 1 - a cavalo; 2 - a carruagem; 3 - Utilização de barco ou outra navegação.
 
         if nome == "Planicie":
-            return [40, 64, 40, None, 'Planície']
+            return [36, 60, 36, None, 'Planície']
         elif nome == "Deserto":
-            return [40, 64, None, None, 'Deserto']
+            return [36, 60, None, None, 'Deserto']
         elif nome == "Floresta":
-            return [34, 52, None, None, 'Floresta']
+            return [18, 30, None, None, 'Floresta (terreno difícil)']
         elif nome == "Pantano":
-            return [30, None, None, None, 'Pântano']
+            return [18, None, None, None, 'Pântano (terreno difícil)']
         elif nome == "Tundra":
-            return [34, 52, None, None, 'Tundra']
+            return [36, 60, None, None, 'Tundra']
         elif nome == "Montanha":
-            return [32, None, None, None, 'Montanhoso']
+            return [18, None, None, None, 'Montanhoso (terreno difícil)']
         elif nome == "Oceano":
-            return [None, None, None, 84, 'Marítimo']
+            return [None, None, None, 60, 'Marítimo']
 
     class Grafo:
 
@@ -456,6 +456,7 @@ def resultado():
         Savana_oeste.adiciona_adjacente(Adjacente(Tauron_norte, 860, ambiente('Planicie')))
         Savana_oeste.adiciona_adjacente(Adjacente(Savana_centro, 1250, ambiente('Planicie')))
         Savana_oeste.adiciona_adjacente(Adjacente(Cidade_deserto, 760, ambiente('Deserto')))
+        Savana_oeste.adiciona_adjacente(Adjacente(Tauron_leste, 698, ambiente('Deserto')))
 
         Savana_centro.adiciona_adjacente(Adjacente(Savana_oeste, 1250, ambiente('Planicie')))
         Savana_centro.adiciona_adjacente(Adjacente(Savana_leste, 1380, ambiente('Deserto')))
@@ -491,6 +492,7 @@ def resultado():
 
         Tauron_leste.adiciona_adjacente(Adjacente(Montanhas_uivantes_norte, 755, ambiente('Planicie')))
         Tauron_leste.adiciona_adjacente(Adjacente(Tauron_centro, 1300, ambiente('Floresta')))
+        Tauron_leste.adiciona_adjacente(Adjacente(Savana_oeste, 698, ambiente('Deserto')))
 
         Tauron_oeste.adiciona_adjacente(Adjacente(Tiberus, 1100, ambiente('Floresta')))
         Tauron_oeste.adiciona_adjacente(Adjacente(Tauron_centro, 965, ambiente('Floresta')))
@@ -732,8 +734,6 @@ def resultado():
                 self.parametro['mar_check'] = 'none'
                 viagem.append(self.parametro.copy())
                 # fim do programa
-                print('printando retorno')
-                print(viagem)
             else:
                 self.parametro['viagem_final'] = 'none'
                 vetor_ordenado = VetorOrdenado(len(atual.adjacentes))
@@ -753,6 +753,8 @@ def resultado():
                         self.transporte -= 2
                     else:
                         self.parametro['carruagem_check'] = 'none'
+                        if self.preco_carruagem != 0:
+                            self.carruagem = True
                     # Checagem se o transporte 'cavalos' é válido para o terreno a seguir, caso esteja sendo usado.
                     if (vetor_ordenado.valores[0].transporte[1] is None) and (self.transporte == 2):
                         self.parametro['cavalo_check'] = 'OBS: A partir deste ponto deverá seguir viagem a pé. ' \
@@ -898,7 +900,6 @@ def resultado():
             return grafo.Tiberus
     busca_aestrela = AEstrela(switch_cities(cidade_destino), transporte_escolhido)
     busca_aestrela.buscar(switch_cities(cidade_origem))
-    print(viagem)
     return render_template('index.html', viagem=viagem)
 
 
