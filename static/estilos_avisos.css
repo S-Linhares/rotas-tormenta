@@ -43,3 +43,7 @@ a.botaoh1:hover {
 .atingido {
     text-decoration: line-through;
 }
+
+.negrito{
+    font-weight: bold;
+}
