@@ -1,4 +1,4 @@
-# Versão 6 dedicada a tentativa de implementação de uma interface web
+# Versão 6 dedicada a tentativa de implementação de uma interface web .
 import numpy as np
 from flask import Flask, render_template, request
 
